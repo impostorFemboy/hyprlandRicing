@@ -1,0 +1,101 @@
+/* ============================= */
+/*         PALETA GLOBAL         */
+/* ============================= */
+* {
+  font-family: "CaskaydiaCove Nerd Font";
+  font-size: 14px;
+  font-weight: 600;
+  color: #e8d3ff; /* Texto morado claro */
+}
+
+/* Fondo invisible para que solo se vean las cápsulas */
+#waybar {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* ============================= */
+/*     ESTILO BASE DE CÁPSULAS   */
+/* ============================= */
+
+.capsule {
+  background-color: rgba(90, 0, 150, 0.55);   /* morado translúcido */
+  border-radius: 14px;
+  padding: 4px 8px;
+  margin: 4px 6px;
+  border: 1px solid rgba(190, 120, 255, 0.7); /* borde neón */
+  box-shadow: 0 0 10px rgba(200, 140, 255, 0.55); /* glow */
+}
+
+/* Hover brillante */
+.capsule:hover {
+  box-shadow: 0 0 14px rgba(220, 170, 255, 0.9);
+  background-color: rgba(110, 0, 190, 0.6);
+}
+
+/* ============================= */
+/*      APLICAR A LOS MÓDULOS    */
+/* ============================= */
+
+#workspaces,
+#custom-cava,
+#window,
+#tray,
+#system,
+#power,
+#clock
+{
+  /* aplica cápsula */
+  background-color: rgba(90, 0, 150, 0.55);
+  border-radius: 14px;
+  padding: 4px 8px;
+  margin: 4px 6px;
+  border: 1px solid rgba(190, 120, 255, 0.7);
+  box-shadow: 0 0 10px rgba(200, 140, 255, 0.55);
+}
+
+/* ============================= */
+/*     WORKSPACES CUSTOM         */
+/* ============================= */
+
+#workspaces button {
+  background: transparent;
+  padding: 2px 6px;
+  margin: 0 3px;
+  border-radius: 10px;
+  color: #d6baff;
+}
+
+#workspaces button.active {
+  background-color: rgba(200, 160, 255, 0.35);
+  color: white;
+  box-shadow: 0 0 8px rgba(200,160,255,0.75);
+}
+
+#workspaces button:hover {
+  background-color: rgba(200, 160, 255, 0.20);
+}
+
+/* ============================= */
+/*          TOOLTIPS             */
+/* ============================= */
+
+tooltip {
+  background-color: rgba(40,0,70,0.95);
+  border-radius: 10px;
+  border: 1px solid rgba(200,150,255,0.8);
+  padding: 6px;
+  color: #f1d9ff;
+  box-shadow: 0 0 12px rgba(200,140,255,0.7);
+}
+
+
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
+  color: #a55555;
+}

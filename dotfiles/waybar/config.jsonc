@@ -1,0 +1,247 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 0,
+
+  "modules-left": [
+    "group/desks",
+    "group/power"
+  ],
+
+  "modules-center": [
+    "group/window_cava"
+  ],
+
+  "modules-right": [
+    "group/system",
+    "group/clockk"
+  ],
+
+  /* ================================
+     GRUPO 1 — WORKSPACES + TRAY
+     ================================ */
+  "group/desks": {
+    "orientation": "horizontal",
+    "modules": [
+      "hyprland/workspaces",
+      "tray"
+    ],
+    "class": "group-pill"
+  },
+  /* ================================
+     GRUPO 2 — POWER (2ª cápsula)
+     ================================ */
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/lock",
+      "custom/reboot",
+      "custom/down"
+    ],
+    "class": "group-pill"
+  },
+
+  /* ================================
+     GRUPO 3 — WINDOW + CAVA (cápsula central)
+     ================================ */
+  "group/window_cava": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/cava",
+      "hyprland/window"
+    ],
+    "class": "group-pill"
+  },
+
+  /* ================================
+     GRUPO 4 — SISTEMA (cápsula larga)
+     ================================ */
+  "group/system": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth",
+      "battery",
+      "pulseaudio",
+      "backlight",
+      "custom/temperature",
+      "memory",
+      "cpu"
+    ],
+    "class": "group-pill"
+  },
+
+  /* ================================
+     GRUPO 5 — CLOCK
+     ================================ */
+  "group/clockk": {
+    "orientation": "horizontal",
+    "modules": [
+      "clock"
+    ],
+    "class": "group-pill"
+  },
+
+  /* =====================================
+     CONFIGURACIONES DE MÓDULOS
+     ===================================== */
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4]
+    },
+    "format-icons": {
+      "1": "󰣇",
+      "2": "󰈹",
+      "3": "󰇮",
+      "4": "",
+      "default": ""
+    }
+  },
+
+  "custom/lock": {
+    "format": "<span color='#7DE7FF'>  </span>",
+    "on-click": "hyprlock",
+    "tooltip": true,
+    "tooltip-format": "Lock screen"
+  },
+
+  "custom/reboot": {
+    "format": "<span color='#FF9DFF'>  </span>",
+    "on-click": "systemctl reboot",
+    "tooltip": true,
+    "tooltip-format": "Reboot"
+  },
+
+  "custom/down": {
+    "format": "<span color='#FF6B81'>  </span>",
+    "on-click": "systemctl poweroff",
+    "tooltip": true,
+    "tooltip-format": "Power off"
+  },
+
+  "custom/cava": {
+    "exec": "~/.config/waybar/scripts/cava_player.sh",
+    "return-type": "plain",
+    "interval": 0.05
+  },
+
+  "network": {
+    "format-wifi": "<span color='#DCA7FF'> 󰤨  </span>{essid} ",
+    "format-ethernet": "<span color='#DCA7FF'>   </span>Wired ",
+    "tooltip-format": "<span color='#FF9DFF'> 󰅧  </span>{bandwidthUpBytes}  <span color='#7DE7FF'> 󰅢 </span>{bandwidthDownBytes}",
+    "format-linked": "<span color='#FF9DFF'> 󱘖  </span>{ifname} (No IP) ",
+    "format-disconnected": "<span color='#FF6B81'>   </span>Disconnected ",
+    "format-alt": "<span color='#DCA7FF'> 󰤨  </span>{signalStrength}% ",
+    "interval": 1
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span color='#DCA7FF'> {icon} </span>{capacity}% ",
+    "format-charging": "<span color='#DCA7FF'> 󱐋 </span>{capacity}%",
+    "interval": 1,
+    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+    "tooltip": true
+  },
+
+  "pulseaudio": {
+    "format": "<span color='#DCA7FF'> {icon} </span>{volume}% ",
+    "format-muted": "<span color='#FF6B81'> 󰖁 </span>0% ",
+    "format-icons": {
+      "headphone": "<span color='#DCA7FF'>  </span>",
+      "hands-free": "<span color='#DCA7FF'>  </span>",
+      "headset": "<span color='#DCA7FF'>  </span>",
+      "phone": "<span color='#7DE7FF'>  </span>",
+      "portable": "<span color='#7DE7FF'>  </span>",
+      "car": "<span color='#FF9DFF'>  </span>",
+      "headphone": "",
+      "default": [
+        "<span color='#8A63FF'></span>",
+        "<span color='#C68AFF'> </span>",
+        "<span color='#E6C6FF'>  </span>"
+      ]
+    },
+    "on-click-right": "pavucontrol -t 3",
+    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "tooltip": true,
+    "tooltip-format": "Volumen: {volume}%"
+  },
+
+  "custom/temperature": {
+    "exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+    "format": "<span color='#FFB86C'>  </span>{}°C ",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "CPU: {}°C"
+  },
+
+  "memory": {
+    "format": "<span color='#DCA7FF'>   </span>{used:0.1f}G/{total:0.1f}G ",
+    "tooltip": true,
+    "tooltip-format": "RAM: {used:0.2f}G/{total:0.2f}G"
+  },
+
+  "cpu": {
+    "format": "<span color='#FF9F0A'>   </span>{usage}% ",
+    "tooltip": true
+  },
+
+  "clock": {
+    "interval": 1,
+    "timezone": "Europe/Madrid",
+    "format": "<span color='#BF00FF'>   </span>{:%H:%M} ",
+    "tooltip": true,
+    "tooltip-format": "{:L%Y-%m-%d, %A}"
+  },
+
+  "custom/voxtype": {
+    "exec": "omarchy-voxtype-status",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "idle": "",
+      "recording": "󰍬",
+      "transcribing": "󰔟"
+    },
+    "tooltip": true,
+    "on-click-right": "omarchy-voxtype-config",
+    "on-click": "omarchy-voxtype-model"
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 6
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span color='#DCA7FF'> {icon} </span>{percent}% ",
+    "tooltip": true,
+    "tooltip-format": "Brillo: {percent}%",
+    "format-icons": [
+      "<span color='#8A63FF'>󰃞</span>",
+      "<span color='#B98CFF'>󰃝</span>",
+      "<span color='#DCA7FF'>󰃟</span>",
+      "<span color='#F1D4FF'>󰃠</span>"
+    ]
+  },
+
+  "bluetooth": {
+    "format": "<span color='#7DE7FF'>  </span>{status} ",
+    "format-connected": "<span color='#7DE7FF'>  </span>{device_alias} ",
+    "format-connected-battery": "<span color='#7DE7FF'>  </span>{device_alias}{device_battery_percentage}% ",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  }
+}
+
