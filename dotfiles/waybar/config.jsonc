@@ -48,7 +48,7 @@
   "group/window_cava": {
     "orientation": "horizontal",
     "modules": [
-      "custom/cava",
+      //"custom/cava",
       "hyprland/window"
     ],
     "class": "group-pill"
@@ -96,11 +96,11 @@
       "*": [1, 2, 3, 4]
     },
     "format-icons": {
-      "1": "󰣇",
-      "2": "󰈹",
-      "3": "󰇮",
-      "4": "",
-      "default": ""
+      "1": "ᓚᘏᗢ",
+      "2": "ᓚᘏᗢ⁺",
+      "3": "ᓚᘏᗢˣ",
+      "4": "ᓚᘏᗢ˖",
+      "default": "ᓚᘏᗢ˙"
     }
   },
 
@@ -244,4 +244,5 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   }
 }
+
 
